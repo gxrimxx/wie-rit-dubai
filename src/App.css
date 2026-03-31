@@ -1,0 +1,166 @@
+/* ─── WIE RIT Dubai – Design System ─────────────────────────────────── */
+:root {
+  --bg:          #f4effe;
+  --bg-soft:     #ece4fb;
+  --card:        #ddd0f5;
+  --card-dark:   #c9b5ec;
+  --purple-deep: #5b1d8a;
+  --purple:      #7c3aed;
+  --purple-mid:  #9d65db;
+  --purple-light:#b991e8;
+  --pink:        #e8578a;
+  --pink-light:  #f9a8d4;
+  --white:       #ffffff;
+  --text-dark:   #3b1f6b;
+  --text-mid:    #6b4d9e;
+  --text-soft:   #9b7bc8;
+  --shadow-sm:   0 2px 12px rgba(91,29,138,0.10);
+  --shadow-md:   0 6px 28px rgba(91,29,138,0.14);
+  --shadow-lg:   0 16px 48px rgba(91,29,138,0.18);
+  --radius-sm:   12px;
+  --radius-md:   20px;
+  --radius-lg:   32px;
+  --ff-display:  'Playfair Display', serif;
+  --ff-body:     'DM Sans', sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--ff-body);
+  background: var(--bg);
+  color: var(--text-dark);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* ─── Scrollbar ──────────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 7px; }
+::-webkit-scrollbar-track { background: var(--bg-soft); }
+::-webkit-scrollbar-thumb { background: var(--card-dark); border-radius: 10px; }
+
+/* ─── Utility ────────────────────────────────────────────────────────── */
+.section-title {
+  font-family: var(--ff-display);
+  font-size: clamp(2rem, 4vw, 3rem);
+  color: var(--purple-deep);
+  margin-bottom: 0.4rem;
+}
+.section-subtitle {
+  font-size: 1.05rem;
+  color: var(--text-mid);
+  font-weight: 300;
+  margin-bottom: 2.5rem;
+}
+.heart { color: var(--pink); }
+.pill {
+  display: inline-block;
+  background: var(--card);
+  color: var(--purple-mid);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  padding: 4px 14px;
+  border-radius: 100px;
+}
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--purple-deep);
+  color: #fff;
+  font-family: var(--ff-body);
+  font-size: 0.95rem;
+  font-weight: 600;
+  padding: 13px 30px;
+  border-radius: 100px;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+  box-shadow: var(--shadow-sm);
+}
+.btn-primary:hover {
+  background: var(--purple);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  color: var(--purple-deep);
+  font-family: var(--ff-body);
+  font-size: 0.95rem;
+  font-weight: 600;
+  padding: 12px 28px;
+  border-radius: 100px;
+  border: 2px solid var(--purple-deep);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.btn-outline:hover {
+  background: var(--purple-deep);
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+/* ─── Section wrapper ─────────────────────────────────────────────────── */
+.section-wrap {
+  padding: 90px 5vw;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ─── Fade-in animation ──────────────────────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.fade-up { animation: fadeUp 0.6s ease both; }
+
+/* ─── Modal overlay ──────────────────────────────────────────────────── */
+.modal-overlay {
+  position: fixed; inset: 0;
+  background: rgba(59,31,107,0.45);
+  backdrop-filter: blur(6px);
+  z-index: 1000;
+  display: flex; align-items: center; justify-content: center;
+  padding: 20px;
+  animation: fadeUp 0.25s ease;
+}
+.modal-box {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  width: 100%; max-width: 520px;
+  max-height: 90vh; overflow-y: auto;
+  box-shadow: var(--shadow-lg);
+  position: relative;
+}
+.modal-img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+}
+.modal-img-placeholder {
+  width: 100%; height: 220px;
+  background: linear-gradient(135deg, var(--card), var(--card-dark));
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 4rem;
+}
+.modal-body { padding: 28px 32px 32px; }
+.modal-close {
+  position: absolute; top: 16px; right: 16px;
+  background: rgba(255,255,255,0.85);
+  border: none; border-radius: 50%;
+  width: 36px; height: 36px;
+  cursor: pointer; font-size: 1.1rem;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--purple-deep); font-weight: 700;
+  transition: background 0.2s;
+}
+.modal-close:hover { background: var(--card); }
